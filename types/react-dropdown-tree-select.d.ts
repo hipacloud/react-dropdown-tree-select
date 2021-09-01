@@ -109,6 +109,28 @@ declare module 'react-dropdown-tree-select' {
     tags: TreeNode[]
   }
 
+  export class Tree {
+    data: TreeData
+    searchModeOn?: boolean;
+    clearSearchOnChange?: boolean
+    keepTreeOnSearch?: boolean
+    keepChildrenOnSearch?: boolean
+    keepOpenOnSelect?: boolean
+    texts?: TextProps
+    showDropdown?: ShowDropdownState
+    className?: string
+    onChange?: (currentNode: TreeNode, selectedNodes: TreeNode[]) => void
+    onAction?: (currentNode: TreeNode, currentAction: NodeAction) => void
+    onCheckboxChange?: () => void;
+    onNodeToggle?: (currentNode: TreeNode) => void
+    mode?: Mode
+    showPartiallySelected?: boolean
+    pageSize?: number;
+    disabled?: boolean
+    readOnly?: boolean
+    clientId?: string
+  }
+
   export default class DropdownTreeSelect extends React.Component<DropdownTreeSelectProps, DropdownTreeSelectState> {
     node: HTMLDivElement
     searchInput: HTMLInputElement
