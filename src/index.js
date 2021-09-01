@@ -366,3 +366,4 @@ class DropdownTreeSelect extends Component {
 }
 
 export default DropdownTreeSelect
+export { clientIdGenerator, Tree, Input, TreeManager }
