@@ -42,8 +42,14 @@ package-lock.json
 
 # build outputs
 docs/bundle.js
-dist
+
+dist/*
+!dist/react-dropdown-tree-select.d.ts
+!dist/react-dropdown-tree-select.js
 *.tgz
+.github
+.vscode
+__snapshots__
 
 # Webstorm cache
 .idea
