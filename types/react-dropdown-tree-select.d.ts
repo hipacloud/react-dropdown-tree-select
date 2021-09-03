@@ -109,9 +109,9 @@ declare module 'react-dropdown-tree-select' {
     tags: TreeNode[]
   }
 
-  export class Tree {
+  interface TreeProps {
     data: TreeData
-    searchModeOn?: boolean;
+    searchModeOn?: boolean
     clearSearchOnChange?: boolean
     keepTreeOnSearch?: boolean
     keepChildrenOnSearch?: boolean
@@ -121,14 +121,46 @@ declare module 'react-dropdown-tree-select' {
     className?: string
     onChange?: (currentNode: TreeNode, selectedNodes: TreeNode[]) => void
     onAction?: (currentNode: TreeNode, currentAction: NodeAction) => void
-    onCheckboxChange?: () => void;
+    onCheckboxChange?: (id: string, checked: boolean, callback: TreeNode[]) => void
     onNodeToggle?: (currentNode: TreeNode) => void
     mode?: Mode
     showPartiallySelected?: boolean
-    pageSize?: number;
+    pageSize?: number
     disabled?: boolean
     readOnly?: boolean
     clientId?: string
+  }
+
+  export class Tree extends React.Component<TreeProps> {}
+
+  interface InputProps {
+    tags: TreeNode[]
+    texts: any
+    onInputChange: (value: string) => any
+    onFocus: any
+    onBlur: any
+    onTagRemove: any
+    onKeyDown: any
+    inputRef: any
+    disabled: boolean
+    readOnly: boolean
+    activeDescendant: string
+    inlineSearchInput: boolean
+  }
+
+  export class Input extends React.Component<InputProps> {}
+  export class TreeManager {
+    constructor(props: any)
+    getNodeById(props: any)
+    getTreeAndTags(): any
+    restoreNodes(): any
+    filterTree(value: string, keepTreeOnSearch: boolean, keepChildrenOnSearch: boolean): any
+    toggleNodeExpandState(id: string): any
+    matchTree: any
+    tree: any
+    setNodeCheckedState(id: string, checked: boolean): any
+    get tags(): any
+    restoreDefaultValues(): any
   }
 
   export default class DropdownTreeSelect extends React.Component<DropdownTreeSelectProps, DropdownTreeSelectState> {
@@ -199,5 +231,10 @@ declare module 'react-dropdown-tree-select' {
 
   export interface NodeDataSet {
     [property: string]: any
+  }
+
+  export interface clientIdGenerator {
+    get: (item: any) => string
+    reset: () => void
   }
 }
