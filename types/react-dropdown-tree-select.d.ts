@@ -121,14 +121,15 @@ declare module 'react-dropdown-tree-select' {
     className?: string
     onChange?: (currentNode: TreeNode, selectedNodes: TreeNode[]) => void
     onAction?: (currentNode: TreeNode, currentAction: NodeAction) => void
-    onCheckboxChange?: (id: string, checked: boolean, callback: TreeNode[]) => void
-    onNodeToggle?: (currentNode: TreeNode) => void
+    onCheckboxChange?: (id: string, checked: boolean, callback?: (tags: TreeNode[]) => void) => void
+    onNodeToggle?: (currentNodeId: string) => void
     mode?: Mode
     showPartiallySelected?: boolean
     pageSize?: number
     disabled?: boolean
     readOnly?: boolean
     clientId?: string
+    activeDescendant?: string;
   }
 
   export class Tree extends React.Component<TreeProps> {}
