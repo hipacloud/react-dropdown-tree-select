@@ -40,7 +40,6 @@ class NodeLabel extends PureComponent {
       } = e
       onCheckboxChange(id, checked)
     }
-    e.preventDefault()
     e.stopPropagation()
     e.nativeEvent.stopImmediatePropagation()
   }
