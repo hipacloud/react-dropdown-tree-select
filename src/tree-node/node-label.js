@@ -48,11 +48,8 @@ class NodeLabel extends PureComponent {
   handleToggle = e => {
     console.log('handleToggle ', e)
     if (this.props.isLeaf) {
-      const { id, onCheckboxChange } = this.props
-      const {
-        target: { checked },
-      } = e
-      onCheckboxChange(id, checked)
+      const { id, onCheckboxChange, checked } = this.props
+      onCheckboxChange(id, !checked)
       e.stopPropagation()
       e.nativeEvent.stopImmediatePropagation()
       return
