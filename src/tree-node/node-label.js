@@ -46,11 +46,15 @@ class NodeLabel extends PureComponent {
   }
 
   handleToggle = e => {
-    console.log('handleToggle e', e)
-    e.preventDefault()
-    e.stopPropagation()
-    e.nativeEvent.stopImmediatePropagation()
-    this.props.onNodeToggle(this.props.id)
+    if (e.target.nodeName.toLowerCase() === 'input') {
+      e.stopPropagation()
+      e.nativeEvent.stopImmediatePropagation()
+    } else {
+      e.preventDefault()
+      e.stopPropagation()
+      e.nativeEvent.stopImmediatePropagation()
+      this.props.onNodeToggle(this.props.id)
+    }
   }
 
   render() {
