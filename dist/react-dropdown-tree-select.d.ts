@@ -99,7 +99,7 @@ declare module 'react-dropdown-tree-select' {
     searchPredicate?: (currentNode: TreeNode, searchTerm: string) => boolean
     /** inlineSearchInput=true Makes the search input renders inside the dropdown-content. Defaults to `false` */
     inlineSearchInput?: boolean
-    toggler?: React.ReactElement
+    toggler?: any
   }
 
   export interface DropdownTreeSelectState {

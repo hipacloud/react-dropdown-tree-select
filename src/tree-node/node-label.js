@@ -24,7 +24,6 @@ class NodeLabel extends PureComponent {
   }
 
   handleCheckboxChange = e => {
-    console.log('handleCheckboxChange', e)
     if (e.target.nodeName.toLowerCase() !== 'input') {
       e.preventDefault()
       e.stopPropagation()
@@ -46,7 +45,6 @@ class NodeLabel extends PureComponent {
   }
 
   handleToggle = e => {
-    console.log('handleToggle ', e)
     if (this.props.isLeaf) {
       const { id, onCheckboxChange, checked } = this.props
       onCheckboxChange(id, !checked)

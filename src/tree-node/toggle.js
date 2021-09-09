@@ -7,7 +7,7 @@ class Toggle extends PureComponent {
     isLeaf: PropTypes.bool,
     onNodeToggle: PropTypes.func,
     id: PropTypes.string,
-    toggler: PropTypes.element,
+    toggler: PropTypes.elementType,
   }
 
   onToggle = e => {
@@ -31,7 +31,7 @@ class Toggle extends PureComponent {
       return null
     }
     if (this.props.toggler) {
-      const Toggler = React.cloneElement(this.props.toggler)
+      const Toggler = this.props.toggler
       return (
         <div className={toggleCx}>
           <Toggler onClick={this.onToggle} onKeyDown={this.onKeyDown} />

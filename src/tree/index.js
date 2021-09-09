@@ -21,7 +21,7 @@ class Tree extends Component {
     readOnly: PropTypes.bool,
     clientId: PropTypes.string,
     activeDescendant: PropTypes.string,
-    toggler: PropTypes.element,
+    toggler: PropTypes.elementType,
   }
 
   static defaultProps = {

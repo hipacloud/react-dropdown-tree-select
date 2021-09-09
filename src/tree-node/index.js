@@ -70,7 +70,7 @@ class TreeNode extends PureComponent {
     showPartiallySelected: PropTypes.bool,
     readOnly: PropTypes.bool,
     clientId: PropTypes.string,
-    toggler: PropTypes.element,
+    toggler: PropTypes.elementType,
   }
 
   getAriaAttributes = () => {
