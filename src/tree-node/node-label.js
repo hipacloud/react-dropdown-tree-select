@@ -42,6 +42,7 @@ class NodeLabel extends PureComponent {
   }
 
   handleToggle = e => {
+    e.preventDefault()
     e.stopPropagation()
     e.nativeEvent.stopImmediatePropagation()
     this.props.onNodeToggle(this.props.id)
@@ -64,7 +65,7 @@ class NodeLabel extends PureComponent {
     const className = ['checkbox-item', mode === 'simpleSelect' && 'simple-select'].filter(Boolean).join(' ')
 
     return (
-      <label title={title || label} onClick={this.handleToggle}>
+      <span title={title || label} onClick={this.handleToggle}>
         {mode === 'radioSelect' ? (
           <RadioButton name={clientId} className="radio-item" onChange={this.handleCheckboxChange} {...sharedProps} />
         ) : (
@@ -77,7 +78,7 @@ class NodeLabel extends PureComponent {
           />
         )}
         <span {...nodeLabelProps}>{label}</span>
-      </label>
+      </span>
     )
   }
 }
