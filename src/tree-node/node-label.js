@@ -23,8 +23,11 @@ class NodeLabel extends PureComponent {
   }
 
   handleCheckboxChange = e => {
+    console.log('handleCheckboxChange', e)
     if (e.target.nodeName.toLowerCase() !== 'input') {
       e.preventDefault()
+      e.stopPropagation()
+      e.nativeEvent.stopImmediatePropagation()
       return
     }
     const { mode, id, onCheckboxChange } = this.props
@@ -37,11 +40,13 @@ class NodeLabel extends PureComponent {
       } = e
       onCheckboxChange(id, checked)
     }
+    e.preventDefault()
     e.stopPropagation()
     e.nativeEvent.stopImmediatePropagation()
   }
 
   handleToggle = e => {
+    console.log('handleToggle e', e)
     e.preventDefault()
     e.stopPropagation()
     e.nativeEvent.stopImmediatePropagation()
