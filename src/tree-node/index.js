@@ -70,6 +70,7 @@ class TreeNode extends PureComponent {
     showPartiallySelected: PropTypes.bool,
     readOnly: PropTypes.bool,
     clientId: PropTypes.string,
+    toggler: PropTypes.element,
   }
 
   getAriaAttributes = () => {
@@ -110,6 +111,7 @@ class TreeNode extends PureComponent {
       showPartiallySelected,
       readOnly,
       clientId,
+      toggler,
     } = this.props
     const liCx = getNodeCx(this.props)
     const style = keepTreeOnSearch || !searchModeOn ? { paddingLeft: `${(_depth || 0) * 20}px` } : {}
@@ -118,7 +120,6 @@ class TreeNode extends PureComponent {
 
     return (
       <li className={liCx} style={style} id={liId} {...getDataset(dataset)} {...this.getAriaAttributes()}>
-        <Toggle isLeaf={isLeaf(_children)} expanded={expanded} id={_id} onNodeToggle={onNodeToggle} />
         <NodeLabel
           title={title}
           label={label}
@@ -127,12 +128,14 @@ class TreeNode extends PureComponent {
           checked={checked}
           value={value}
           disabled={disabled}
+          onNodeToggle={onNodeToggle}
           mode={mode}
           onCheckboxChange={onCheckboxChange}
           showPartiallySelected={showPartiallySelected}
           readOnly={readOnly}
           clientId={clientId}
         />
+        <Toggle isLeaf={isLeaf(_children)} expanded={expanded} id={_id} onNodeToggle={onNodeToggle} toggler={toggler} />
         <Actions actions={actions} onAction={onAction} id={_id} readOnly={readOnly} />
       </li>
     )

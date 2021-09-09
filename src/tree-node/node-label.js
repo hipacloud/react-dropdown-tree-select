@@ -17,6 +17,7 @@ class NodeLabel extends PureComponent {
     mode: PropTypes.oneOf(['multiSelect', 'simpleSelect', 'radioSelect', 'hierarchical']),
     showPartiallySelected: PropTypes.bool,
     onCheckboxChange: PropTypes.func,
+    onNodeToggle: PropTypes.func,
     readOnly: PropTypes.bool,
     clientId: PropTypes.string,
   }
@@ -53,7 +54,7 @@ class NodeLabel extends PureComponent {
     const className = ['checkbox-item', mode === 'simpleSelect' && 'simple-select'].filter(Boolean).join(' ')
 
     return (
-      <label title={title || label} htmlFor={id}>
+      <label title={title || label} onClick={event => this.props.onNodeToggle(event)}>
         {mode === 'radioSelect' ? (
           <RadioButton name={clientId} className="radio-item" onChange={this.handleCheckboxChange} {...sharedProps} />
         ) : (

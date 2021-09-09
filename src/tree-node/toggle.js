@@ -7,6 +7,7 @@ class Toggle extends PureComponent {
     isLeaf: PropTypes.bool,
     onNodeToggle: PropTypes.func,
     id: PropTypes.string,
+    toggler: PropTypes.element,
   }
 
   onToggle = e => {
@@ -27,9 +28,16 @@ class Toggle extends PureComponent {
     const toggleCx = ['toggle', expanded && 'expanded', !expanded && 'collapsed'].filter(Boolean).join(' ')
 
     if (isLeaf) {
-      return <i role="button" tabIndex={-1} className={toggleCx} style={{ visibility: 'hidden' }} aria-hidden />
+      return null
     }
-
+    if (this.props.toggler) {
+      const Toggler = React.cloneElement(this.props.toggler)
+      return (
+        <div className={toggleCx}>
+          <Toggler onClick={this.onToggle} onKeyDown={this.onKeyDown} />
+        </div>
+      )
+    }
     return (
       <i
         role="button"

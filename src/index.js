@@ -49,6 +49,7 @@ class DropdownTreeSelect extends Component {
     searchPredicate: PropTypes.func,
     inlineSearchInput: PropTypes.bool,
     tabIndex: PropTypes.number,
+    toggler: PropTypes.element,
   }
 
   static defaultProps = {
@@ -292,7 +293,7 @@ class DropdownTreeSelect extends Component {
   }
 
   render() {
-    const { disabled, readOnly, mode, texts, inlineSearchInput, tabIndex } = this.props
+    const { disabled, readOnly, mode, texts, inlineSearchInput, tabIndex, toggler } = this.props
     const { showDropdown, currentFocus, tags } = this.state
 
     const activeDescendant = currentFocus ? `${currentFocus}_li` : undefined
@@ -354,6 +355,7 @@ class DropdownTreeSelect extends Component {
                   onNodeToggle={this.onNodeToggle}
                   mode={mode}
                   showPartiallySelected={this.props.showPartiallySelected}
+                  toggler={toggler}
                   {...commonProps}
                 />
               )}
