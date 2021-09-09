@@ -20,6 +20,7 @@ class NodeLabel extends PureComponent {
     onNodeToggle: PropTypes.func,
     readOnly: PropTypes.bool,
     clientId: PropTypes.string,
+    isLeaf: PropTypes.bool,
   }
 
   handleCheckboxChange = e => {
@@ -45,14 +46,26 @@ class NodeLabel extends PureComponent {
   }
 
   handleToggle = e => {
-    if (e.target.nodeName.toLowerCase() === 'input') {
+    console.log('handleToggle ', e)
+    if (this.props.isLeaf) {
+      const { id, onCheckboxChange } = this.props
+      const {
+        target: { checked },
+      } = e
+      onCheckboxChange(id, checked)
       e.stopPropagation()
       e.nativeEvent.stopImmediatePropagation()
+      return
     } else {
-      e.preventDefault()
-      e.stopPropagation()
-      e.nativeEvent.stopImmediatePropagation()
-      this.props.onNodeToggle(this.props.id)
+      if (e.target.nodeName.toLowerCase() === 'input') {
+        e.stopPropagation()
+        e.nativeEvent.stopImmediatePropagation()
+      } else {
+        e.preventDefault()
+        e.stopPropagation()
+        e.nativeEvent.stopImmediatePropagation()
+        this.props.onNodeToggle(this.props.id)
+      }
     }
   }
 
