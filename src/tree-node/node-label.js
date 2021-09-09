@@ -23,6 +23,10 @@ class NodeLabel extends PureComponent {
   }
 
   handleCheckboxChange = e => {
+    if (e.target.nodeName.toLowerCase() !== 'input') {
+      e.preventDefault()
+      return
+    }
     const { mode, id, onCheckboxChange } = this.props
 
     if (mode === 'simpleSelect' || mode === 'radioSelect') {
